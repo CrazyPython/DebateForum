@@ -4,7 +4,7 @@ import time
 urls=(
 "/","displaythreads",
 "/viewthread","displaythreads",
-"/viewthread/(.*)/Vote/(Up|Down)","vote",
+"/viewthread/(.*)/Vote/(Up|Down|Remove)","vote",
 "/viewthread/(.*)","displaythread",
 "/newthread/(.*)","newthread",
 "/newthread","newthread",
