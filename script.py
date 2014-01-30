@@ -33,7 +33,7 @@ class displaythread():
             percent = 50;log("*Zero total votes")
         return self.template(
             name,
-            len(entries)-1,
+            len(entry['replies'])-1, #length
             entry['replies'],
             entry['creatorname'],
             entry['totvotes'],
@@ -69,9 +69,9 @@ class newthread:
         try:
             username,threadname = data.username,data.threadname
         except:
-            return self.template(mode)
+            badrequest()
         if threadname in entries:
-            return self.template("Exists")
+            return self.template("Exists","")
         entries[threadname]={"creator":username,"votes":0,"totvotes":0,"replies":[],"creatorname":[]}
         raise web.seeother("/viewthread/"+threadname)
 class displaythreads:
