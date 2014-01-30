@@ -24,7 +24,8 @@ class displaythread():
             entry=entries[name]
         except KeyError:
             log("Invalid name")
-            return "401"
+            web.badrequest()
+            return '<h1>400 Bad Request</h1><br>Looks like the thread you requested doesn\'t exist. <a href="/viewthread">Mistyped?</a>'
         print entry['replies']
         try:
             percent = entry['votes']/entry['totvotes']
