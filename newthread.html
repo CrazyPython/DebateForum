@@ -1,0 +1,28 @@
+$def with (mode,data)
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    <link rel="icon" href="new.ico"/>
+</head>
+<body>
+<ul class=NavBar>
+    <li class=NavBar><a href="/" class="NavBar">Home</a></li>
+</ul>
+<hr>
+<form name="input" action="/newthread" method="post">
+    Thread name: <input type="text" name="threadname"><br>
+    Post as: <input type="text" name="username">
+    <input type="submit" value="Submit">
+</form>
+$if mode!="DEFAULT":
+    <div class="REDEmphasize">
+        $if mode=="Exists":
+            Sorry, but $data already exists!
+            Please change the name, or <a href="/viewthread/$data">click here to go to the existing debate.</a>
+        $else:
+            We could not provide the page for you.
+            $data
+    </div>
+</body>
+</html>
