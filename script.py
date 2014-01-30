@@ -51,7 +51,7 @@ class displaythread():
         entries[name]['creatorname'].append(poster)
         web.seeother("/viewthread/"+name)
 class autoretrieve():
-    files=["new.ico","thread.ico","mystyle.css","ThumbsDown.jpg","ThumbsUp.jpg","remove.png"]
+    files=["view.ico","new.ico","thread.ico","mystyle.css","ThumbsDown.jpg","ThumbsUp.jpg","remove.png"]
     data=dict(zip(files,[open(f).read() for f in files]))
     def GET(self,f):
         try:
