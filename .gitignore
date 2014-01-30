@@ -17,5 +17,11 @@
 *.out
 *.app
 
+#Packages
+web/*
+
 #Caches
 *.pyc
+
+#Logs
+Action log
