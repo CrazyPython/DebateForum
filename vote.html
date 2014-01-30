@@ -1,0 +1,23 @@
+$def with (vote,id)
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<title>Voting</title>
+$if vote=="Up":
+	<link rel="icon" href="/ThumbsUp.ico">
+$elif vote=="Down":
+        <link rel="icon" href="/ThumbsDown.ico">
+$else:
+	<link rel="icon" href="/remove.ico">
+</head>
+<body onload="setTimeout('window.close()', 2500);">
+$if id==0:
+	Successfully voted!<br>
+$elif id==1:
+	Successfully removed vote!<br>
+$elif id==2:
+	Invalid action!<br>
+$else:
+	Wha??? The server has encountered a error.
+	
+</body>
