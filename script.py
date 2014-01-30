@@ -57,7 +57,7 @@ class autoretrieve():
         try:
             return self.data[f]
         except KeyError:
-            return "not found"
+            web.notfound()
 class newthread:
     template=web.template.frender("newthread.html")
     default=template("DEFAULT",0)
