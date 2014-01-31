@@ -94,13 +94,13 @@ class vote:
         ######Set cookies and change votes#########
         ##Removing/Adding an extra vote if it was previously voted the other way##
         if vote=="Up":
-            web.setcookie("Voted:"+thread,"up")
+            web.setcookie("vote_"+thread,"up")
             if current=="down":
                 entries[thread]["votes"]+=1
             entries[thread]["votes"]+=1
             ID=0
         elif vote=="Down":
-            web.setcookie("Voted:"+thread,"down")
+            web.setcookie("vote_"+thread,"down")
             if current=="up":
                 entries[thread]["votes"]-=1
             entries[thread]["votes"]-=1
@@ -110,10 +110,10 @@ class vote:
                 entries[thread]["votes"]-=1
             elif current=="down":
                 entries[thread]["votes"]+=1
-            web.setcookie("Voted:"+thread,"BEING DELETED",expires=1)
+            web.setcookie("vote_"+thread,"BEING DELETED",expires=1)
             totvotes-=1
             ID=1
-        if current == "BEING DELETED":# if he hasn't already voted, increase the total vote count by 1
+        if current == "BEING DELETED" and vote != "Remove":# if he hasn't already voted, increase the total vote count by 1
             totvotes+=1
         return self.template(vote,ID)
 #classes = [eval(item) for item,number in enumerate(urls) if number%2==1]
