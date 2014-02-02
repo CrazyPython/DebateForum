@@ -87,6 +87,7 @@ class displaythreads:
 class vote:
     template=web.template.frender('vote.html')
     def GET(self,thread,vote):
+        global entries
         try:
             current=web.cookies().get("vote_"+thread)
         except:
