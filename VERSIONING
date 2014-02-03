@@ -1,0 +1,5 @@
+R.r.i.c
+R- Large release with new design                             Update infrequently.
+r- Release with at least 30 new features or bugs fixed.      Stay up to date, but keep stable. 
+i- Issue number                                              Stay with every new feature or bugfix that comes out
+c- Commit number                                             Latest version no matter whether its broken or not
