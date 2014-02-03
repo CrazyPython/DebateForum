@@ -70,9 +70,15 @@ class newthread:
             username,threadname = data.username,data.threadname
         except:
             badrequest()
+        if threadname.startswith("-"):
+            return self.template("Other","Sorry, but thread names can't start with hyphens!")
+        elif threadname:"[-a-zA-Z1-9]*":
+            return self.template("Other","Sorry, but your thread name can only consist of hyphens, spaces,and alphanumerics.")
+        else:
+            cookiename=threadname.replace(" ","-")
         if threadname in entries:
             return self.template("Exists","")
-        entries[threadname]={"creator":username,"votes":0,"totvotes":0,"replies":[],"creatorname":[]}
+        entries[threadname]={"creator":username,"votes":0,"totvotes":0,"replies":[],"creatorname":[],"cookiename":cookiename}
         raise web.seeother("/viewthread/"+threadname)
 class displaythreads:
     template=web.template.frender('Thread Template.html')
@@ -86,8 +92,9 @@ class displaythreads:
                       )
 class vote:
     template=web.template.frender('vote.html')
-    def GET(self,thread,vote):
+    def GET(self,threadname,vote):
         global entries
+        thread = entries[threadname]["cookiename"]
         try:
             current=web.cookies().get("vote_"+thread)
         except:
@@ -97,23 +104,23 @@ class vote:
         if vote=="Up":
             web.setcookie("vote_"+thread,"up")
             if current=="down":
-                entries[thread]["votes"]+=1
-            entries[thread]["votes"]+=1
+                entries[threadname]["votes"]+=1
+            entries[threadname]["votes"]+=1
             ID=0
         elif vote=="Down":
             web.setcookie("vote_"+thread,"down")
             if current=="up":
-                entries[thread]["votes"]-=1
-            entries[thread]["votes"]-=1
+                entries[threadname]["votes"]-=1
+            entries[threadname]["votes"]-=1
             ID=0
         elif vote=="Remove":
             if current=="BEING DELETED":
                 #don't do anything if it he didn't already vote#
                 return self.template(vote,ID)
             elif current=="up":
-                entries[thread]["votes"]-=1
+                entries[threadname]["votes"]-=1
             elif current=="down":
-                entries[thread]["votes"]+=1
+                entries[threadname]["votes"]+=1
             web.setcookie("vote_"+thread,"BEING DELETED",expires=1)
             totvotes-=1
             ID=1
