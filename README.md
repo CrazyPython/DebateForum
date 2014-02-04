@@ -18,3 +18,4 @@ Clases of people:
 - Web.py and python             All-around scripter
 - Web.py, python, html and css  All-puprose man
 -->
+[![Gitter chat](https://badges.gitter.im/CrazyPython/DebateForum.png)](https://gitter.im/CrazyPython/DebateForum)
