@@ -83,13 +83,13 @@ class newthread:
 class displaythreads:
     template=web.template.frender('Thread Template.html')
     def GET(self):
-        return self.template(
-            len(entries),
-            [value['creator'] for value in entries.values()],
-            entries.keys(),
-            [value['votes'] for value in entries.values()],
-            [value['totvotes'] for value in entries.values()]
-                      )
+        creators,entrynames,votes,totvotes=[],[],[],[]
+        for entryname,entry in entries.iteritems():
+            creators.append(entry['creator'])
+            entrynames.append(entryname)
+            votes.append(entry['votes'])
+            totvotes.append(entry['totvotes'])
+        return self.template(len(entries),creators,entrynames,votes,totvotes)
 class vote:
     template=web.template.frender('vote.html')
     def GET(self,threadname,vote):
