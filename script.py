@@ -104,9 +104,8 @@ class vote:
     def GET(self,threadname,vote):
         global entries
         thread = entries[threadname]["cookiename"]
-        try:
-            current=web.cookies().get("vote_"+thread)
-        except:
+        current=web.cookies().get("vote_"+thread)
+        if current==None:
             current="BEING DELETED" #act like it is being deleted if its not there.
         ######Set cookies and change votes#########
         ##Removing/Adding an extra vote if it was previously voted the other way##
