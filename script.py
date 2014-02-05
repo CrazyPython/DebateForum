@@ -10,7 +10,16 @@ urls=(
 "/newthread","newthread",
 '/(.*)','autoretrieve'
 )
-
+def matches(string,regex):
+    class Tracker():
+        def __init__(self):
+            self.called=False
+        def __call__(self,mtchobj)
+            self.called=True
+            return ""
+    mystalker=Tracker()
+    re.sub(string,mystalker,regex)
+    return mystalker.called
 def log(message=None):
     sys.stderr.write("\t"+message+"\n")
     logf = open("Action Log",'a')
@@ -72,7 +81,7 @@ class newthread:
             badrequest()
         if threadname.startswith("-"):
             return self.template("Other","Sorry, but thread names can't start with hyphens!")
-        elif threadname:"[-a-zA-Z1-9]*":
+        elif matches(threadname,"[-a-zA-Z1-9]*"):
             return self.template("Other","Sorry, but your thread name can only consist of hyphens, spaces,and alphanumerics.")
         else:
             cookiename=threadname.replace(" ","-")
