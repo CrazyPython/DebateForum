@@ -18,4 +18,6 @@ Clases of people:
 - Web.py and python             All-around scripter
 - Web.py, python, html and css  All-puprose man
 -->
+Binaries can be found [here](https://github.com/CrazyPython/DebateForumBuilds). Source code releases can be found [here](https://github.com/CrazyPython/DebateForum/releases)
+
 [![Gitter chat](https://badges.gitter.im/CrazyPython/DebateForum.png)](https://gitter.im/CrazyPython/DebateForum)
