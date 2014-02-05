@@ -14,7 +14,7 @@ def matches(string,regex):
     class Tracker():
         def __init__(self):
             self.called=False
-        def __call__(self,mtchobj)
+        def __call__(self,mtchobj):
             self.called=True
             return ""
     mystalker=Tracker()
