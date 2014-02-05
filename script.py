@@ -130,10 +130,10 @@ class vote:
             elif current=="down":
                 entries[threadname]["votes"]+=1
             web.setcookie("vote_"+thread,"BEING DELETED",expires=1)
-            totvotes-=1
+            thread["totvotes"]-=1
             ID=1
         if current == "BEING DELETED" and vote != "Remove":# if he hasn't already voted, increase the total vote count by 1
-            totvotes+=1
+            thread["totvotes"]+=1
         return self.template(vote,ID)
 #classes = [eval(item) for item,number in enumerate(urls) if number%2==1]
 #for i in classes:
