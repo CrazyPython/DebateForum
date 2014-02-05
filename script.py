@@ -39,7 +39,7 @@ class displaythread():
         try:
             percent = entry['votes']/entry['totvotes']
         except ZeroDivisionError:
-            percent = 50;log("*Zero total votes")
+            percent = 50;log("*Zero total votes"
         return self.template(
             name,
             len(entry['replies'])-1, #length
