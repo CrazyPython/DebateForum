@@ -124,7 +124,7 @@ class vote:
         elif vote=="Remove":
             if current=="BEING DELETED":
                 #don't do anything if it he didn't already vote#
-                return self.template(vote,ID)
+                return self.template(vote,1)
             elif current=="up":
                 entries[threadname]["votes"]-=1
             elif current=="down":
