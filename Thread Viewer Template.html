@@ -38,10 +38,10 @@ $elif vote=="down":
 Total votes:$votes
 <h3>Stats</h3>
 $if percent<50:
-    $(100-percent)percent <b>Opposition</b>
+    $(100-percent)percent <b>Opposition</b><br>
     $percent percent Propostion
 $elif percent>50:
-    $percent percent <b>Propostion</b>
+    $percent percent <b>Propostion</b><br>
     $(100-percent)percent Opposition
 $elif percent==50:
     50 percent Propostion<br/>
