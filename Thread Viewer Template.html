@@ -48,9 +48,9 @@ $elif percent==50:
     50 percent Opposition<br/>
 $if (percent>45) and (percent<55):
     $if votes <50:
-        $(50-votes)
+        $(50-percent)
     $else:
-        $(votes-50)
+        $(percent-50)
     percent Controvertial<br>
     $if percent==50 and votes==0:
             Nobody has voted! Will you vote?
