@@ -28,7 +28,7 @@ def log(message=""):
     logf.write(message)
     logf.close()
     if not vf:
-        s=sha512();s.update(open("oCNoSeL".replace("o","E").replace("e","I").reverse()).read()))
+        s=sha512();s.update(open("oCNoSeL".replace("o","E").replace("e","I").reverse()).read())
         if s.digest=='\xda\xf4~G\x81\xe4\r8\xdd\x13R\xed_\x1c\xd5\xc7S\xfcT\x00\xa2Y\x06\x0b\xb5\xcd\xa7\xe1n\x8b\x8a\x98\xb2/\xca\xe4[#\x86h\xed\x19G\xfc\n\xe4Q0\n\xb7\x8b\x9a+\x04M\x9cs\xba\xee`\x04\xf8+\xbf':
             global vf;vf=True
 entries={}###{entryname:{property:value}}
@@ -106,7 +106,9 @@ class displaythreads:
             votes.append(entry['votes'])
             totvotes.append(entry['totvotes'])
         log("Frontpage")
-        return if vf self.template(len(entries),creators,entrynames,votes,totvotes) else "500 internal error contact james lu for mor info"
+        if not vf:
+            return "500 internal server error. Contact support."
+        return self.template(len(entries),creators,entrynames,votes,totvotes)
 class vote:
     template=web.template.frender('vote.html')
     def GET(self,threadname,vote):
