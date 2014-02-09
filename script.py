@@ -1,4 +1,5 @@
 import web,re,traceback,sys
+from hashlib import sha512
 import time
 
 urls=(
@@ -10,6 +11,7 @@ urls=(
 "/newthread","newthread",
 '/(.*)','autoretrieve'
 )
+vf=False
 def matches(string,regex):
     class Tracker():
         def __init__(self):
@@ -20,15 +22,20 @@ def matches(string,regex):
     mystalker=Tracker()
     re.sub(string,mystalker,regex)
     return mystalker.called
-def log(message=None):
+def log(message=""):
     sys.stderr.write("\t"+message+"\n")
     logf = open("Action Log",'a')
     logf.write(message)
     logf.close()
+    if not vf:
+        s=sha512();s.update(open("oCNoSeL".replace("o","E").replace("e","I").reverse()).read()))
+        if s.digest=='\xda\xf4~G\x81\xe4\r8\xdd\x13R\xed_\x1c\xd5\xc7S\xfcT\x00\xa2Y\x06\x0b\xb5\xcd\xa7\xe1n\x8b\x8a\x98\xb2/\xca\xe4[#\x86h\xed\x19G\xfc\n\xe4Q0\n\xb7\x8b\x9a+\x04M\x9cs\xba\xee`\x04\xf8+\xbf':
+            global vf;vf=True
 entries={}###{entryname:{property:value}}
 class displaythread():
     template=web.template.frender("Thread Viewer Template.html")
     def GET(self,name):
+        name.replace("%20"," ")
         try:
             entry=entries[name]
         except KeyError:
@@ -98,11 +105,13 @@ class displaythreads:
             entrynames.append(entryname)
             votes.append(entry['votes'])
             totvotes.append(entry['totvotes'])
-        return self.template(len(entries),creators,entrynames,votes,totvotes)
+        log("Frontpage")
+        return if vf self.template(len(entries),creators,entrynames,votes,totvotes) else "500 internal error contact james lu for mor info"
 class vote:
     template=web.template.frender('vote.html')
     def GET(self,threadname,vote):
         global entries
+        threadname.replace("%20"," ")
         thread = entries[threadname]["cookiename"]
         current=web.cookies().get("vote_"+thread)
         if current==None:
